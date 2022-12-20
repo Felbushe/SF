@@ -1,0 +1,82 @@
+import json
+from types import NoneType
+with open('response2.json', encoding='utf8') as f:
+    templates = json.load(f)
+
+def CheckInt(item):
+    if isinstance(item, int):
+        return True
+    elif isinstance(item, NoneType):
+        return True
+    else:
+        return False
+
+def CheckStr(item):
+    if isinstance(item, str):
+        return True
+    elif isinstance(item, NoneType):
+        return True
+    else:
+        return False
+
+def CheckBool(item):
+    if isinstance(item, bool):
+        return True
+    elif isinstance(item, NoneType):
+        return True
+    else:
+        return False
+
+def CheckUrl(item):
+    if isinstance(item, str):
+        return item.startswith('http://') or item.startswith('https://')
+    elif isinstance(item, NoneType):
+        return True
+    else:
+        return False
+
+def CheckStrValue(item, val):
+    if isinstance(item, str):
+        return item in val
+    elif isinstance(item, NoneType):
+        return True
+    else:
+        return False
+
+def ErrorLog(id,item, value, string):
+    Error.append({f'id={id}': f'{item}: {value}, {string}'})
+
+listOfItems = {'id': 'int', 'image': 'url', 'color': 'str',
+               'font': 'str', 'font_size': 'str', 'font_weight': 'str',
+               'x': 'str', 'y': 'str', 'width': 'str',
+               'height': 'str', 'text': 'str', 'opacity': 'str',
+               'text_align': 'str', 'font_style': 'str',
+               'text_decoration': 'str', 'anchor_number': 'str',
+               'type': 'str'}
+Error = []
+
+for item in templates.get('results'):
+    for i in item.keys():
+        if i in listOfItems.keys():
+            if listOfItems.get(i) == 'int':
+                if not CheckInt(item.get(i)):
+                    ErrorLog(item.get('id'), i, item.get(i), f'ожидали тип {listOfItems.get(i)}')
+            if listOfItems.get(i) == 'str':
+                if not CheckStr(item.get(i)):
+                    ErrorLog(item.get('id'), i, item.get(i), f'ожидали тип {listOfItems.get(i)}')
+            if listOfItems.get(i) == 'bool':
+                if not CheckBool(item.get(i)):
+                    ErrorLog(item.get('id'), i, item.get(i), f'ожидали тип {listOfItems.get(i)}')
+            if listOfItems.get(i) == 'url':
+                if not CheckUrl(item.get(i)):
+                    ErrorLog(item.get('id'), i, item.get(i), f'ожидали тип {listOfItems.get(i)}')
+            if listOfItems.get(i) == 'val':
+                if not CheckStrValue(item.get(i), ['image', 'background', 'text', 'mainBackground', 'anchor']):
+                    ErrorLog(item.get('id'), i, item.get(i), 'ожидали значение image или background или text или mainBackground или anchor')
+
+if Error == []:
+    print('Pass')
+else:
+    print('Fail')
+    for e in Error:
+        print(e)
