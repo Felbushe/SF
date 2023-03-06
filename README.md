@@ -1,4 +1,4 @@
-# **Итоговый проект по автоматизации тестирования**
+# [Итоговый проект по автоматизации тестирования](https://github.com/Felbushe/SF/tree/master/Modul28)
 
 Объект тестирования: [ЕЛК Web](https://b2c.passport.rt.ru/)
 
@@ -16,5 +16,5 @@
 [тест-кейсы | баг-репорт](https://docs.google.com/spreadsheets/d/17_YXYt6EbPbQvn2FGbPurODVGAqzRaDtms-5lAvGkK4/edit?usp=sharing)
 
 
-## + Небольшие программы на Python
+## + [Небольшие программы на Python](https://github.com/Felbushe/SF/tree/master/Python)
 
