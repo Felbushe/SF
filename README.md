@@ -15,6 +15,5 @@
 
 [тест-кейсы | баг-репорт](https://docs.google.com/spreadsheets/d/17_YXYt6EbPbQvn2FGbPurODVGAqzRaDtms-5lAvGkK4/edit?usp=sharing)
 
-
 ## + [Небольшие программы на Python](https://github.com/Felbushe/SF/tree/master/Python)
 
